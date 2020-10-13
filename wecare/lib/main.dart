@@ -32,9 +32,15 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Container( //untuk tampilan body
         child: Column(
           children : [ //untuk menampilkan daftar text
-            Text ('Caesarina Kurnia Ananta - 182410102008'), //untuk membuat text
-            Text ('Zihan Muhammad Al Ghifari Ibnu Zain - 182410102036'), //untuk membuat text
-            Text ('Calvin Catur Alfarizi - 182410102061'),//untuk membuat text
+            ListTile(
+              title: Text ('Caesarina Kurnia Ananta - 182410102008'),//untuk membuat text
+            ),
+            ListTile(
+              title: Text ('Zihan Muhammad Al Ghifari Ibnu Zain - 182410102036'),//untuk membuat text
+            ),
+            ListTile(
+              title: Text ('Calvin Catur Alfarizi - 182410102061'),//untuk membuat text
+            ),
           ]
         )
       )
