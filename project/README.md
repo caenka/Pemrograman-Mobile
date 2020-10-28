@@ -1,6 +1,6 @@
-# wecare_app
+# project
 
-Aplikasi yang ditujukan untuk mewujudkan SDGs 2 yakni Zero Hunger 
+A new Flutter application.
 
 ## Getting Started
 

@@ -1,4 +1,4 @@
-package wecare.wecare_app
+package com.wecare.project
 
 import io.flutter.embedding.android.FlutterActivity
 
