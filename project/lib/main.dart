@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:project/login_page.dart';
 import 'package:project/registrasi_page.dart';
 
+import 'home.dart';
+
 void main() {
   runApp(MyApp()); //method runApp untuk menjalankan class MyApp
 }
@@ -13,7 +15,14 @@ class MyApp extends StatelessWidget { //membuat class MyApp yang merupakan turun
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title : 'Wecare',
-      home: login(),
+      initialRoute: '/',
+      routes: {
+        '/' : (context)=>login(),
+        registrasi.routeName: (context)=>registrasi(),
+        //home.routeName: (context)=>home(),
+
+      },
+      //home: login(),
       // untuk menamai judul
     );
   }

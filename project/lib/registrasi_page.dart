@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:project/login_page.dart';
 
 
 class registrasi extends StatefulWidget {
+  static const String routeName="/registrasi";
   @override
   _registrasiState createState() => _registrasiState();
 }
@@ -18,7 +20,7 @@ class _registrasiState extends State<registrasi> {
               child: Stack(
                 children: <Widget> [
                   Container(
-                    padding: EdgeInsets.only(top: 20, left:75, right: 70),
+                    padding: EdgeInsets.only(top: 20, left:100, right: 70),
                     child: Image.asset(
                       'assets/images/logo.png',
                       //alignment: Icons.format_align_center.right,
@@ -165,7 +167,9 @@ class _registrasiState extends State<registrasi> {
                             style: TextStyle(fontFamily: 'Montserrat'),),
                           SizedBox(width: 10.0),
                           InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
                            child: Text('Masuk',
                                style: TextStyle(
                                    color: Colors.red,

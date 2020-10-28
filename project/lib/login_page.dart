@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:project/registrasi_page.dart';
+import 'package:project/home.dart';
 
 class login extends StatefulWidget {
   @override
@@ -78,7 +79,9 @@ class _loginState extends State<login> {
                             color: Color(0xFFFF8F00),
                             elevation: 7.0,
                             child: GestureDetector(
-                                onTap: () {},
+                                onTap: () {
+                                 //Navigator.pushReplacementNamed(context, home.routeName);
+                                },
                                 child: Center(
                                   child: Text('Masuk', style: TextStyle(
                                       color: Colors.black,
@@ -98,7 +101,9 @@ class _loginState extends State<login> {
                               style: TextStyle(fontFamily: 'Montserrat'),),
                             SizedBox(width: 10.0),
                             InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.pushNamed(context, registrasi.routeName);
+                                },
                               child: Text('Daftar',
                                   style: TextStyle(
                                       color: Colors.red,
