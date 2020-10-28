@@ -1,0 +1,4 @@
+#Tue Oct 13 21:46:26 ICT 2020
+base.0=D\:\\KULIAH\\SEMESTER 5\\Pemro Mobile\\Pemrograman-Mobile\\wecare_app\\build\\app\\intermediates\\transforms\\r8\\release\\0\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
