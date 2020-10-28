@@ -59,7 +59,7 @@ class _loginState extends State<login> {
                           alignment: Alignment(1.0, 0),
                           padding: EdgeInsets.only(top: 20.0, left: 20.0),
                           child: InkWell(
-                              child: Text('Forget Password ?',
+                              child: Text('Lupa Password ?',
                                   style: TextStyle(
                                       color: Color(0xFFFF8F00),
                                       fontWeight: FontWeight.bold,
@@ -79,7 +79,7 @@ class _loginState extends State<login> {
                             child: GestureDetector(
                                 onTap: () {},
                                 child: Center(
-                                  child: Text('Login', style: TextStyle(
+                                  child: Text('Masuk', style: TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
                                       fontFamily: 'Montserrat'
