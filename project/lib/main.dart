@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:project/login_page.dart';
+import 'package:project/registrasi_page.dart';
 
 void main() {
   runApp(MyApp()); //method runApp untuk menjalankan class MyApp
