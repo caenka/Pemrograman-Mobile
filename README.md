@@ -12,7 +12,8 @@ Aplikasi ini diharapkan dapat mengurangi angka kelaparan di Indonesia, khusunya 
 
 Progress Update :
 1.Halaman Login
-2. Halaman Home
+2.Halaman Registrasi
+3.Halaman Home
 
 Caesarina Kurnia Ananta (182410102008)
 Zihan Muhammad Al Ghifari Ibnu Zain (182410102036)
