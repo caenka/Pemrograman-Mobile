@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:project/registrasi_page.dart';
-import 'package:project/home.dart';
 
-class login extends StatefulWidget {
+class Login extends StatefulWidget {
   @override
-  _loginState createState() => _loginState();
+  _LoginState createState() => _LoginState();
 }
 
-class _loginState extends State<login> {
+class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) { //menampilkan sesuai dengan widget yang dikembalikan oleh method build
     return Scaffold( //mengembalikan scaffold
@@ -80,7 +79,7 @@ class _loginState extends State<login> {
                             elevation: 7.0,
                             child: GestureDetector(
                                 onTap: () {
-                                 //Navigator.pushReplacementNamed(context, home.routeName);
+                                  //Navigator.pushReplacementNamed(context, home.routeName);
                                 },
                                 child: Center(
                                   child: Text('Masuk', style: TextStyle(
@@ -102,8 +101,9 @@ class _loginState extends State<login> {
                             SizedBox(width: 10.0),
                             InkWell(
                               onTap: () {
-                                Navigator.pushNamed(context, registrasi.routeName);
-                                },
+                                Navigator.push(context, new MaterialPageRoute(builder: (context) => registrasi()));
+
+                              },
                               child: Text('Daftar',
                                   style: TextStyle(
                                       color: Colors.red,

@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:project/login_page.dart';
-
+import 'package:flutter/material.dart';
 
 class registrasi extends StatefulWidget {
   static const String routeName="/registrasi";
@@ -26,9 +25,6 @@ class _registrasiState extends State<registrasi> {
                       //alignment: Icons.format_align_center.right,
                       height: 200,
                       width: 200,
-
-
-
                     ),
                   ),
                   Container(
@@ -123,20 +119,6 @@ class _registrasiState extends State<registrasi> {
                           ),
                           obscureText: true,
                         ),
-                        //SizedBox(height: 5.0),
-                        //Container(
-                        //alignment: Alignment(1.0, 0),
-                        //padding: EdgeInsets.only(top: 20.0, left: 20.0),
-                        //child: InkWell(
-                        //child: Text('Lupa Password ?',
-                        //style: TextStyle(
-                        //  color: Color(0xFFFF8F00),
-                        //fontWeight: FontWeight.bold,
-                        //fontFamily: 'Montserrat',
-                        //decoration: TextDecoration.underline)
-                        //)
-                        //),
-                        //),
                         SizedBox(height: 35.0),
                         Container(
                           height: 40.0,
@@ -161,24 +143,24 @@ class _registrasiState extends State<registrasi> {
 
                         SizedBox(height: 15.0),
                         Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget> [
-                          Text('Sudah punya akun?',
-                            style: TextStyle(fontFamily: 'Montserrat'),),
-                          SizedBox(width: 10.0),
-                          InkWell(
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                           child: Text('Masuk',
-                               style: TextStyle(
-                                   color: Colors.red,
-                                   fontWeight: FontWeight.bold,
-                                   fontFamily: 'Montserrat',
-                                   decoration: TextDecoration.underline)
-                           ),
-                         )
-                        ],
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget> [
+                            Text('Sudah punya akun?',
+                              style: TextStyle(fontFamily: 'Montserrat'),),
+                            SizedBox(width: 10.0),
+                            InkWell(
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                              child: Text('Masuk',
+                                  style: TextStyle(
+                                      color: Colors.red,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'Montserrat',
+                                      decoration: TextDecoration.underline)
+                              ),
+                            )
+                          ],
                         )
                       ],
                     ),
