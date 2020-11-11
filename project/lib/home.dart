@@ -1,4 +1,7 @@
+//import 'dart:html';
+
 import 'package:bubble_bottom_bar/bubble_bottom_bar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
 import 'package:project/presentation/custom_icon_icons.dart';
@@ -27,7 +30,7 @@ class homeState extends State <home>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.amber,
+        backgroundColor: Colors.amberAccent,
         body:Column(
           children:<Widget>[
             Container(
@@ -35,33 +38,54 @@ class homeState extends State <home>{
               child: Stack(
                 children: <Widget>[
                   Container(
-                    margin: EdgeInsets.only(left:70.0),
-                    width:250,
+                    margin: EdgeInsets.only(left:70.0, top: 1),
+                    width:210,
                     child: Image.asset(
                         'assets/images/logo.png'
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(left: 10.0,top: 250.0),
+                    margin: EdgeInsets.only(left: 70.0,top: 220.0),
                     child: Text(
-                      'Hallo',
+                      'Yuk Berbagi',
                       style: TextStyle(
-                          fontSize: 20.0),
+                        fontWeight: FontWeight.bold,
+                          fontSize: 40.0),
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.only(left: 10.0,top: 280.0),
+                    padding: EdgeInsets.only(left: 124.0,top: 270.0),
                     child: Text(
-                      'Nama Saya Siapa',
+                      'Pilih Salah Satu',
                       style: TextStyle(
-                          fontSize: 30.0, fontWeight: FontWeight.bold),
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                          fontSize: 15.0,),
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(left: 57.0,top: 430.0),
+                    child: Text(
+                      'Money To Stuff',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 15.0,),
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(left: 200.0,top: 430.0),
+                    child: Text(
+                      'Money To Money',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 15.0,),
                     ),
                   ),
                   //================================Icon===========================================
                   // SizedBox(height: MediaQuery.of(context).size.height * 0.5,),
                   Container(
                     width: MediaQuery.of(context).size.width,
-                    margin: EdgeInsets.only(top: MediaQuery.of(context).size.height *0.5),
+                    margin: EdgeInsets.only(top: MediaQuery.of(context).size.height *0.44),
                     child: Column(
                       children: [
                         Row(
@@ -85,9 +109,10 @@ class homeState extends State <home>{
                                   ],
                                 ),
                                 child: Icon(CustomIcon.donation, size: 50.0),
+                                
                               ),
                             ),
-                            SizedBox(width: 30,),
+                            SizedBox(width: 60,),
                             InkWell(
                               onTap: (){
                               },
@@ -96,6 +121,7 @@ class homeState extends State <home>{
                                 height: 90,
                                 width: 90,
                                 decoration: BoxDecoration(
+
                                   color : Colors.deepOrangeAccent,
                                   borderRadius: BorderRadius.all(Radius.circular(100)),
                                   boxShadow: [
@@ -113,9 +139,10 @@ class homeState extends State <home>{
                           ],
                         ),
                         Container(
-                          margin: EdgeInsets.only(top: 6.0,left: 30.0),
-                          width: 400.0,
+                          margin: EdgeInsets.only(top: 4.0,left: 30.0),
+                          width: 900,
                           child: Image.asset('assets/images/Gb.png'),
+
                         )
                       ],
                     ),
