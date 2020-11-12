@@ -38,49 +38,69 @@ class homeState extends State <home>{
               child: Stack(
                 children: <Widget>[
                   Container(
-                    margin: EdgeInsets.only(left:70.0, top: 1),
-                    width:210,
+                    width:MediaQuery.of(context).size.width,
+                    margin: EdgeInsets.only(bottom: MediaQuery.of(context).size.height *0.20),
                     child: Image.asset(
                         'assets/images/logo.png'
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(left: 70.0,top: 220.0),
-                    child: Text(
-                      'Yuk Berbagi',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                          fontSize: 40.0),
+                    width:MediaQuery.of(context).size.height,
+                    margin: EdgeInsets.only(top: MediaQuery.of(context).size.height *0.35),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          //margin: EdgeInsets.only(top: 280,left: 120.0),
+                          child: Text(
+                            'Yuk Berbagi',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                                fontSize: 40.0),
+                          ),
+                        ),
+                        Container(
+                          child: Text(
+                            'Pilih Salah Satu',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                              fontSize: 15.0,),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.only(left: 124.0,top: 270.0),
-                    child: Text(
-                      'Pilih Salah Satu',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                          fontSize: 15.0,),
+                    width: MediaQuery.of(context).size.width,
+                    margin: EdgeInsets.only(top: MediaQuery.of(context).size.height *0.57),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          // margin: EdgeInsets.only(top: MediaQuery.of(context).size.height *0.22),
+                          // padding: EdgeInsets.only(left: 57.0,top: 430.0),
+                          child: Text(
+                            'Money To Stuff',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 15.0,),
+                          ),
+                        ),
+                        SizedBox(width: 60,),
+                        Container(
+                         // padding: EdgeInsets.only(left: 100.0,top: 430.0),
+                          child: Text(
+                            'Money To Money',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 15.0,),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  Container(
-                    padding: EdgeInsets.only(left: 57.0,top: 430.0),
-                    child: Text(
-                      'Money To Stuff',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 15.0,),
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.only(left: 200.0,top: 430.0),
-                    child: Text(
-                      'Money To Money',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 15.0,),
-                    ),
-                  ),
+
                   //================================Icon===========================================
                   // SizedBox(height: MediaQuery.of(context).size.height * 0.5,),
                   Container(
@@ -140,7 +160,7 @@ class homeState extends State <home>{
                         ),
                         Container(
                           margin: EdgeInsets.only(top: 4.0,left: 30.0),
-                          width: 900,
+                          width: MediaQuery.of(context).size.width,
                           child: Image.asset('assets/images/Gb.png'),
 
                         )
