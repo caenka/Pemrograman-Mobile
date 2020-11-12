@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project/home.dart';
+import 'package:project/navigation.dart';
 import 'package:project/registrasi_page.dart';
 
 class Login extends StatefulWidget {
@@ -80,7 +80,7 @@ class _LoginState extends State<Login> {
                             elevation: 7.0,
                             child: GestureDetector(
                                 onTap: () {
-                                  Navigator.push(context, new MaterialPageRoute(builder: (context) => home()));
+                                  Navigator.push(context, new MaterialPageRoute(builder: (context) => navigation()));
                                 },
                                 child: Center(
                                   child: Text('Masuk', style: TextStyle(
