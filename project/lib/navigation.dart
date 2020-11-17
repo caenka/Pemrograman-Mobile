@@ -1,8 +1,10 @@
 import 'package:bubble_bottom_bar/bubble_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
+import 'package:project/profile.dart';
 import 'home_page.dart';
 import 'history.dart';
+import 'profile.dart';
 // ignore: camel_case_types
 class navigation extends StatefulWidget{
   static const String routeName="/navigation";
@@ -15,6 +17,7 @@ class navigationState extends State <navigation>{
   final List<Widget> _children = [
     HomePage(),
     HistoryWidget(),
+    Profile(),
 
   ];
   @override
