@@ -69,12 +69,12 @@ class _HistoryPageState extends State<HistoryPage> {
                 height: 400,
                 clipBehavior: Clip.none,
                 child: ListView.builder(
-                  itemCount: 5,
+                  itemCount: 3,
                   itemBuilder: (BuildContext context ,int index) {
                     return CardHistory(
                       type: 'barang',
                       cardBank: 'Mandiri',
-                      cardTitle: 'Donasi Barang : Baju Bekas',
+                      cardTitle: 'Donasi Uang ke Barang',
                       cardDate: '2 Januari 2020',
                       cardNominal: 'Rp. 100.000',
                       cardStatus: 'Batal',

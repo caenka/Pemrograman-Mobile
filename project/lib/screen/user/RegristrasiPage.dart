@@ -131,7 +131,7 @@ class _RegristrasiPageState extends State<RegristrasiPage> {
                         child: GestureDetector(
                             onTap: () {},
                             child: Center(
-                              child: Text('Registrasi', style: TextStyle(
+                              child: Text('Regristrasi', style: TextStyle(
                                   color: HexColor(hex_light),
                                   fontWeight: FontWeight.bold,
                                   fontFamily: 'Montserrat'

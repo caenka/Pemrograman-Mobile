@@ -29,6 +29,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   bubble_bottom_bar: ^1.2.0
   line_awesome_icons: ^1.0.4+2
+  hexcolor: ^1.0.6
 
 
 
@@ -47,10 +48,6 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
-  fonts:
-    - family:  CustomIcon
-      fonts:
-        - asset: assets/fonts/CustomIcon.ttf
   assets:
     - assets/images/
 
@@ -70,6 +67,29 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
+  fonts:
+  - family: Nunito
+    fonts:
+      - asset: fonts/Nunito-Regular.ttf
+        weight: 400
+      - asset: fonts/Nunito-Italic.ttf
+        style: italic
+        weight: 400
+      - asset: fonts/Nunito-Semibold.ttf
+        weight: 600
+      - asset: fonts/Nunito-SemiboldItalic.ttf
+        style: italic
+        weight: 600
+      - asset: fonts/Nunito-Bold.ttf
+        weight: 700
+      - asset: fonts/Nunito-BoldItalic.ttf
+        style: italic
+        weight: 700
+      - asset: fonts/Nunito-ExtraBold.ttf
+        weight: 800
+      - asset: fonts/Nunito-ExtraBoldItalic.ttf
+        style: italic
+        weight: 800
   # fonts:
   #   - family: Schyler
   #     fonts:

@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:project/login_page.dart';
 
 // ROUTES DEPEDENCY
 import 'package:project/routes/Routes.dart';
