@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:project/variable/Colors.dart';
 
-class TiComponent extends StatelessWidget{
+class MyValidation extends StatelessWidget{
   final bool isPassword;
   final String label;
   final String hint;
   final String Function(String) validate;
   final void Function(String) change;
 
-  TiComponent({
+  MyValidation({
     this.isPassword = false,
     @required this.label,
     this.hint ="",

@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:project/components/ti_component.dart';
 import 'package:project/screen/user/RegristrasiPage.dart';
 import 'package:project/screen/user/UserIndex.dart';
 import 'package:email_validator/email_validator.dart';
@@ -10,6 +9,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:project/variable/Colors.dart';
 // Component Dependency
 import 'package:project/components/MyContainer.dart';
+import 'package:project/components/MyValidation.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -44,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
                     key: _formKey,
                     child: Column(
                       children: <Widget>[
-                        TiComponent(
+                        MyValidation(
                           label: "Email",
                           hint:"email@example.com",
                           validate: (String value){
@@ -61,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
                           },
                         ),
                         SizedBox(height: 20.0),
-                        TiComponent(
+                        MyValidation(
                           label: "Password",
                           hint:"Password",
                           isPassword: true,
