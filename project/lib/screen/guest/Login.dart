@@ -29,7 +29,7 @@ class _LoginState extends State<Login> {
             resizeToAvoidBottomInset: false,
             backgroundColor: HexColor(hex_white),
             body: Stack(
-            clipBehavior: Clip.antiAlias,
+                clipBehavior: Clip.antiAlias,
                 children: [
                     Positioned(
                         right: -30,
@@ -72,7 +72,7 @@ class _LoginState extends State<Login> {
                             ),
                             Container(
                                 margin: EdgeInsets.only(bottom: 20),
-                                child: MyHeader.Subtitle('Siap melakukan hal luar biasa har ini'),
+                                child: MyHeader.Subtitle('Siap melakukan hal luar biasa hari ini ?'),
                             ),
                             // FORM 
                             MyTextField(
@@ -88,57 +88,57 @@ class _LoginState extends State<Login> {
                             FractionallySizedBox(
                                 widthFactor: 1,
                                 child: RaisedButton(
-                                onPressed: (){
-                                    Navigator.pushNamed(context, '/users');
-                                },
-                                color: HexColor(hex_orange),
-                                elevation: 0,
-                                child: Padding(
-                                    padding: const EdgeInsets.symmetric(vertical: 10),
-                                    child: Text(
-                                    'Login',
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold,
-                                        color: HexColor(hex_white)
+                                    onPressed: (){
+                                        Navigator.pushNamed(context, '/users');
+                                    },
+                                    color: HexColor(hex_orange),
+                                    elevation: 0, 
+                                    child: Padding(
+                                        padding: const EdgeInsets.symmetric(vertical: 10), 
+                                        child: Text(
+                                            'Login', 
+                                            style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold,
+                                            color: HexColor(hex_white)
+                                            ),
+                                        ),
                                     ),
-                                    ),
-                                ),
                                 ),
                             ),
                             Padding(
                                 padding: const EdgeInsets.symmetric(vertical: 8),
                                 child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                    Expanded(
-                                    flex: 2,
-                                    child: Divider(
-                                        color: HexColor(hex_gray),
-                                    ),
-                                    ),
-                                    Flexible(
-                                        flex: 3,
-                                        child: Container(
-                                            padding: EdgeInsets.symmetric(horizontal: 10),
-                                            color: HexColor(hex_white),
-                                            child: Text(
-                                            'Belum punya akun ?',
-                                            style: TextStyle(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center, 
+                                    children: [
+                                        Expanded(
+                                            flex: 2,
+                                            child: Divider(
                                                 color: HexColor(hex_gray),
-                                                fontSize: 10
                                             ),
+                                        ), 
+                                        Flexible(
+                                            flex: 3,
+                                            child: Container(
+                                                padding: EdgeInsets.symmetric(horizontal: 10),
+                                                color: HexColor(hex_white),
+                                                child: Text(
+                                                'Belum punya akun ?',
+                                                style: TextStyle(
+                                                    color: HexColor(hex_gray),
+                                                    fontSize: 10
+                                                ),
+                                                ),
                                             ),
                                         ),
-                                    ),
                                     Expanded(
-                                    flex: 2,
-                                    child: Divider(
-                                        color: HexColor(hex_gray),
-                                    ),
-                                    ),
-                                ],
+                                        flex: 2,
+                                        child: Divider(
+                                            color: HexColor(hex_gray),
+                                        ),
+                                        ),
+                                    ],
                                 ),
                             ),
                             FractionallySizedBox(

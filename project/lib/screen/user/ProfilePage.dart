@@ -7,12 +7,6 @@ import 'package:project/components/MyHeader.dart';
 import 'package:project/variable/Colors.dart';
 import 'package:project/components/MyContainer.dart';
 
-// Component Dependency
-import 'package:project/components/MyContainer.dart';
-import 'package:project/components/MyTextField.dart';
-import 'package:project/components/MyHeader.dart';
-
-
 class ProfilePage extends StatelessWidget {
     @override
     Widget build(BuildContext context) {

@@ -154,22 +154,22 @@ class _CalculatePageState extends State<CalculatePage> {
                         FractionallySizedBox(
                             widthFactor: 1,
                             child: RaisedButton(
-                            onPressed: (){
-                                Navigator.pushNamed(context, '/donations/done');
-                            },
-                            color: HexColor(hex_orange),
-                            elevation: 0,
-                            child: Padding(
-                                padding: const EdgeInsets.symmetric(vertical: 10),
-                                child: Text(
-                                'Selesaikan',
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                    color: HexColor(hex_white)
+                                onPressed: (){
+                                    Navigator.pushNamed(context, '/donations/done');
+                                },
+                                color: HexColor(hex_orange),
+                                elevation: 0,
+                                child: Padding(
+                                    padding: const EdgeInsets.symmetric(vertical: 10),
+                                    child: Text(
+                                    'Selesaikan',
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: HexColor(hex_white)
+                                    ),
+                                    ),
                                 ),
-                                ),
-                            ),
                             ),
                         ),
                     ]   
@@ -252,32 +252,32 @@ class _CalculatePageState extends State<CalculatePage> {
 
     Widget showImage() {
         return FutureBuilder<void>(
-        future: retrieveLostData(),
-        builder: (BuildContext context, AsyncSnapshot<void> snapshot) {
-            switch (snapshot.connectionState) {
-            case ConnectionState.none:
-            case ConnectionState.waiting:
-                return const Text(
-                'You have not yet picked an image.',
-                textAlign: TextAlign.center,
-                );
-            case ConnectionState.done:
-                
-                return previewImage();
-            default:
-                if (snapshot.hasError) {
-                return Text(
-                    'Pick image/video error: ${snapshot.error}}',
-                    textAlign: TextAlign.center,
-                );
-                } else {
-                return const Text(
+            future: retrieveLostData(),
+            builder: (BuildContext context, AsyncSnapshot<void> snapshot) {
+                switch (snapshot.connectionState) {
+                case ConnectionState.none:
+                case ConnectionState.waiting:
+                    return const Text(
                     'You have not yet picked an image.',
                     textAlign: TextAlign.center,
-                );
+                    );
+                case ConnectionState.done:
+                    
+                    return previewImage();
+                default:
+                    if (snapshot.hasError) {
+                    return Text(
+                        'Pick image/video error: ${snapshot.error}}',
+                        textAlign: TextAlign.center,
+                    );
+                    } else {
+                    return const Text(
+                        'You have not yet picked an image.',
+                        textAlign: TextAlign.center,
+                    );
+                    }
                 }
-            }
-        },
+            },
         );
     }
 }

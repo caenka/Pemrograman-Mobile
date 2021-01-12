@@ -22,7 +22,7 @@ class MyTextField extends StatefulWidget {
     Key key,
     @required this.labelText,
     this.hintText,
-    this.isPasswordField = false,
+    this.isPasswordField = true,
     this.isNumber = false,
     this.margin,
     this.prefixIcon,

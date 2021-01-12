@@ -73,7 +73,7 @@ class _RegisterState extends State<Register> {
                   ),
                   Container(
                     margin: EdgeInsets.only(bottom: 20),
-                    child: MyHeader.Subtitle('Yuk Bergabung bersama Wecare'),
+                    child: MyHeader.Subtitle('Yuk Bergabung bersama WeCare'),
                   ),
                   // FORM 
                   MyTextField(
@@ -96,13 +96,15 @@ class _RegisterState extends State<Register> {
                   MyTextField(
                     isPasswordField: true,
                     labelText: 'Konfirmasi Password',
-                    hintText: 'Yuk Bergabung bersama Wecare',
+                    hintText: 'xkadfsfd',
                     margin: EdgeInsets.only(bottom: 40),
                   ),
                   FractionallySizedBox(
                     widthFactor: 1,
                     child: RaisedButton(
-                      onPressed: (){},
+                      onPressed: (){
+                        Navigator.pushNamed(context, '/users');
+                      },
                       color: HexColor(hex_orange),
                       elevation: 0,
                       child: Padding(
@@ -136,7 +138,7 @@ class _RegisterState extends State<Register> {
                             padding: EdgeInsets.symmetric(horizontal: 10),
                             color: HexColor(hex_white),
                             child: Text(
-                              'Suda punya akun ?',
+                              'Sudah punya akun ?',
                               style: TextStyle(
                                 color: HexColor(hex_gray),
                                 fontSize: 10

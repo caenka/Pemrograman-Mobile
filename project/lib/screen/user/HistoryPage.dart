@@ -16,31 +16,6 @@ class HistoryPage extends StatefulWidget {
 }
 
 class _HistoryPageState extends State<HistoryPage> {
-  // DATA
-  var data = [
-    [
-      new DateTime.now(),
-      'BCA',
-      'Sopyan',
-      1000000,
-      'Success'
-    ],
-    [
-      new DateTime.now(),
-      'BCA',
-      'Sopyan',
-      1000000,
-      'Success'
-    ],
-    [
-      new DateTime.now(),
-      'BCA',
-      'Sopyan',
-      1000000,
-      'Success'
-    ],
-  ];
-
   // FOR FOCUS INPUT
   FocusNode _focusNode = new FocusNode();
 

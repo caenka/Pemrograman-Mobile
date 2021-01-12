@@ -90,7 +90,7 @@ class _GoodPageState extends State<GoodPage> {
                                         onPressed: (){},
                                         color: HexColor(hex_white),
                                         child: Text(
-                                            'Paikaian',
+                                            'Pakaian',
                                             style: TextStyle(
                                                 color: HexColor(hex_orange)
                                             ),
@@ -122,20 +122,20 @@ class _GoodPageState extends State<GoodPage> {
                                     decoration: InputDecoration(
                                         labelText: 'Cari Sembako',
                                         suffixIcon: Container(
-                                        color: HexColor(hex_orange),
-                                        padding: EdgeInsets.only(top: 0.0, right: 0.0),
-                                        child: Column(
-                                            crossAxisAlignment: CrossAxisAlignment.center,
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                            Text(
-                                                'Cari',
-                                                style: TextStyle(
-                                                    color: HexColor(hex_white),
-                                                    fontWeight: FontWeight.bold),
-                                            ),
-                                            ],
-                                        )
+                                            color: HexColor(hex_orange), 
+                                            padding: EdgeInsets.only(top: 0.0, right: 0.0), 
+                                            child: Column(
+                                                crossAxisAlignment: CrossAxisAlignment.center,
+                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                children: [
+                                                Text(
+                                                    'Cari',
+                                                    style: TextStyle(
+                                                        color: HexColor(hex_white),
+                                                        fontWeight: FontWeight.bold),
+                                                ),
+                                                ],
+                                            )
                                         ),
                                         labelStyle: TextStyle(
                                             fontWeight: FontWeight.bold,
