@@ -6,23 +6,25 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:project/variable/Colors.dart';
 
 class MyHeader {
-  static Text Title(String text) {
+  static Text Title(String text, {double fontSize, Color color, TextAlign textAlign}) {
     return Text(
       text,
+      textAlign: textAlign != null ? textAlign : TextAlign.left,
       style: TextStyle(
-        fontSize: 20,
+        fontSize: fontSize != null ? fontSize : 20,
         fontWeight: FontWeight.w800,
-        color: HexColor(hex_dark)
+        color: color != null ? color : HexColor(hex_dark)
       ),
     );
   }
-  static Text Subtitle(String text) {
+  static Text Subtitle(String text, {double fontSize, Color color, TextAlign textAlign}) {
     return Text(
       text,
+      textAlign: textAlign != null ? textAlign : TextAlign.left,
       style: TextStyle(
-        fontSize: 14,
+        fontSize: fontSize == null ? fontSize : 16,
         fontWeight: FontWeight.bold,
-        color: HexColor(hex_gray)
+        color: color != null ? color : HexColor(hex_gray)
       ),
     );
   }

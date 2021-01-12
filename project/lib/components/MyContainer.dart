@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
 class MyContainer extends StatelessWidget {
-  Widget child;
+    Widget child;   
 
-  MyContainer({Key key, @required this.child}) : super(key: key);
+    MyContainer({
+        Key key, 
+        @required this.child,
+    }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,8 +17,8 @@ class MyContainer extends StatelessWidget {
       child: ListView(
         children: <Widget>[
           Container(
-            padding: EdgeInsets.all(20.0),
-            child: this.child,
+                padding: EdgeInsets.all(20.0),
+                child: this.child,
           )
         ],
       ),

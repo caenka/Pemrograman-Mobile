@@ -16,6 +16,30 @@ class HistoryPage extends StatefulWidget {
 }
 
 class _HistoryPageState extends State<HistoryPage> {
+  // DATA
+  var data = [
+    [
+      new DateTime.now(),
+      'BCA',
+      'Sopyan',
+      1000000,
+      'Success'
+    ],
+    [
+      new DateTime.now(),
+      'BCA',
+      'Sopyan',
+      1000000,
+      'Success'
+    ],
+    [
+      new DateTime.now(),
+      'BCA',
+      'Sopyan',
+      1000000,
+      'Success'
+    ],
+  ];
 
   // FOR FOCUS INPUT
   FocusNode _focusNode = new FocusNode();
@@ -59,7 +83,9 @@ class _HistoryPageState extends State<HistoryPage> {
               Container(
                 margin: EdgeInsets.only(bottom: 20, top: 20),
                 child: MyTextField(
-                  focusNode: _focusNode,
+                  labelText: 'Cari History',
+                  hintText: 'Masukan History',
+                  suffixIcon: Icons.search,
                 ),
               ),
               // END OF INPUT SEARCH
@@ -74,7 +100,7 @@ class _HistoryPageState extends State<HistoryPage> {
                     return CardHistory(
                       type: 'barang',
                       cardBank: 'Mandiri',
-                      cardTitle: 'Donasi Uang ke Barang',
+                      cardTitle: 'Donasi Barang : Baju Bekas',
                       cardDate: '2 Januari 2020',
                       cardNominal: 'Rp. 100.000',
                       cardStatus: 'Batal',

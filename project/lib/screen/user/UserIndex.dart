@@ -7,9 +7,9 @@ import 'package:line_awesome_icons/line_awesome_icons.dart';
 import 'package:project/variable/Colors.dart';
 
 // Page
+import 'package:project/screen/user/ProfilePage.dart';
 import 'package:project/screen/user/HomePage.dart';
 import 'package:project/screen/user/HistoryPage.dart';
-import 'package:project/screen/user/ProfilPage.dart';
 
 class UserIndex extends StatefulWidget {
   @override
@@ -17,19 +17,19 @@ class UserIndex extends StatefulWidget {
 }
 
 class _UserIndexState extends State<UserIndex> {
-  int currentIndex;
+    int currentIndex;
 
-  final List<Widget> _children = [
-    HomePage(),
-    HistoryPage(),
-    ProfilPage()
-  ];
+    final List<Widget> _children = [
+        HomePage(),
+        HistoryPage(),
+        ProfilePage()
+    ];
 
-  @override
-  void initState() {
-    super.initState();
-    currentIndex=0;
-  }
+    @override
+    void initState() {
+        super.initState();
+        currentIndex=0;
+    }
 
   changePage(int index){
     setState(() {
@@ -40,10 +40,11 @@ class _UserIndexState extends State<UserIndex> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: HexColor(hex_orange),
-      //   title: Text('Wecare'),
-      // ),
+      appBar: AppBar(
+        backgroundColor: HexColor(hex_orange),
+        automaticallyImplyLeading: false,
+        title: Text('Wecare'),
+      ),
       body: _children[currentIndex],
       bottomNavigationBar: BubbleBottomBar(
         items: <BubbleBottomBarItem>[
