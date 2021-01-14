@@ -20,8 +20,15 @@ class UserSeeder extends Seeder
             'updated_at' => null
         ];
         $users[] = [
-            'name' => 'Bambang Gentolet',
-            'email' => 'bambang@gmail.com',
+            'name' => 'Calvin Catur Alfarizi',
+            'email' => 'calvin@gmail.com',
+            'password' => bcrypt('123123'),
+            'created_at' => now(),
+            'updated_at' => null
+        ];
+        $users[] = [
+            'name' => 'Zihan Muhammad Al Ghifari',
+            'email' => 'zihan@gmail.com',
             'password' => bcrypt('123123'),
             'created_at' => now(),
             'updated_at' => null
