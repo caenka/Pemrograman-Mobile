@@ -154,7 +154,7 @@ class _GoodPageState extends State<GoodPage> {
                                         },
                                         color: HexColor(goodType == 'pakaian' ? hex_orange : hex_white),
                                         child: Text(
-                                            'Paikaian',
+                                            'Pakaian',
                                             style: TextStyle(
                                                 color: HexColor(goodType == 'pakaian' ? hex_white : hex_orange)
                                             ),

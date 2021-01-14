@@ -71,10 +71,6 @@ class _MoneyPageState extends State<MoneyPage> {
                                 child: MyHeader.Title('Kalkulasi Donasi', fontSize: 18)
                             ),
                             Container(
-                                margin: EdgeInsets.only(bottom: 20),
-                                child: MyHeader.Subtitle('Pilih Barang dulu untuk di donasikan'),
-                            ),
-                            Container(
                                 margin: EdgeInsets.only(bottom: 10),
                                 child: MyHeader.Title('Donasi Uang', fontSize: 14)
                             ),

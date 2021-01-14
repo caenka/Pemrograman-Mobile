@@ -84,7 +84,7 @@ class _LoginState extends State<Login> {
                                 ),
                                 Container(
                                     margin: EdgeInsets.only(bottom: 20),
-                                    child: MyHeader.Subtitle('Siap melakukan hal luar biasa har ini'),
+                                    child: MyHeader.Subtitle('Siap melakukan hal luar biasa hari ini'),
                                 ),
                                 // FORM 
                                 Form(
