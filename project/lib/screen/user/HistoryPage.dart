@@ -1,7 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:project/api.dart';
 import 'package:project/components/CardHistory.dart';
+import 'package:project/model/Donation.dart';
 
 // Project Dependency
 import 'package:project/variable/Colors.dart';
@@ -16,8 +20,31 @@ class HistoryPage extends StatefulWidget {
 }
 
 class _HistoryPageState extends State<HistoryPage> {
+ 
+
   // FOR FOCUS INPUT
   FocusNode _focusNode = new FocusNode();
+  List<Donation> donations;
+
+  @override
+      void initState() {
+      super.initState();
+      // populateData();
+      loadData();
+  }
+
+  void loadData() async {
+        print('load All');
+
+        var res = await Network().authGetData('/donations');
+        var body = jsonDecode(res.body);
+        print(body);
+        List<Donation> tempList = await body['data'].map<Donation>((item) => (Donation.fromJson(item))).toList();
+        setState(() {
+            donations = tempList;
+        });
+        
+    }
 
   @override
   Widget build(BuildContext context) {
@@ -47,41 +74,35 @@ class _HistoryPageState extends State<HistoryPage> {
                         margin: EdgeInsets.only(bottom: 4),
                         child: MyHeader.Title('History Donasi'),
                       ),
-                      MyHeader.Subtitle('History Donasi Saya')
+                      Container(
+                        margin: EdgeInsets.only(bottom: 15),
+                        child: MyHeader.Subtitle('History Donasi Saya'),
+                      ),
+                      
                     ],
                   ),
                 ],
               ),
               // END OF ROW TITLE 
 
-              // INPUT SEARCH
-              Container(
-                margin: EdgeInsets.only(bottom: 20, top: 20),
-                child: MyTextField(
-                  labelText: 'Cari History',
-                  hintText: 'Masukan History',
-                  suffixIcon: Icons.search,
-                ),
-              ),
-              // END OF INPUT SEARCH
-
               // CARD LIST
-              Container(
-                height: 400,
-                clipBehavior: Clip.none,
-                child: ListView.builder(
-                  itemCount: 3,
+              ConstrainedBox(
+                constraints:  BoxConstraints(
+                    minHeight: 50
+                ),
+                child: donations != null ? ListView.builder(
+                  physics: NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: donations.length,
                   itemBuilder: (BuildContext context ,int index) {
                     return CardHistory(
-                      type: 'barang',
-                      cardBank: 'Mandiri',
-                      cardTitle: 'Donasi Barang : Baju Bekas',
-                      cardDate: '2 Januari 2020',
-                      cardNominal: 'Rp. 100.000',
-                      cardStatus: 'Batal',
+                      type: donations[index].donationTypeId == 1 ? 'uang' : 'barang',
+                      cardTitle: 'Donasi ${donations[index].donationTypeId == 1 ? 'uang' : 'barang'}',
+                      cardDate: '${donations[index].createdAt}',
+                      cardNominal: '${donations[index].totalPrice}',
                     );
                   },
-                ),
+                ) : Text('Waiting data...'),
               )
               // END OF CARD LIST
             ],

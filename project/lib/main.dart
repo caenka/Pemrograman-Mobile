@@ -1,12 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:project/login_page.dart';
 
 // ROUTES DEPEDENCY
 import 'package:project/routes/Routes.dart';
 
 
 void main() {
-  runApp(MyApp()); //method runApp untuk menjalankan class MyApp
+    runApp(MyApp()); //method runApp untuk menjalankan class MyApp
 }
 
 class MyApp extends StatelessWidget { //membuat class MyApp yang merupakan turunan dari StatelessWidget

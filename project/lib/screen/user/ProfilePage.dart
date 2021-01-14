@@ -1,13 +1,47 @@
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+import 'package:project/api.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:project/components/MyHeader.dart';
 
+// Model
+import 'package:project/model/User.dart';
+
 // Project Dependency
 import 'package:project/variable/Colors.dart';
 import 'package:project/components/MyContainer.dart';
 
+// Component Dependency
+import 'package:project/components/MyContainer.dart';
+import 'package:project/components/MyTextField.dart';
+import 'package:project/components/MyHeader.dart';
+
+
 class ProfilePage extends StatelessWidget {
+    User user = null;
+
+    ProfilePage() {
+        getUser();
+    }
+
+    void getUser() async {
+        SharedPreferences localStorage = await SharedPreferences.getInstance();
+        user = User.fromJson( json.decode(localStorage.get('user')) );
+    }
+
+    void logout() async {
+        SharedPreferences localStorage = await SharedPreferences.getInstance();
+        var res = await Network().authPostData(null, '/logout');
+        var body = json.decode(res.body);
+        print(body);
+        localStorage.remove('token');
+    }
+
     @override
     Widget build(BuildContext context) {
         return Scaffold(
@@ -37,14 +71,14 @@ class ProfilePage extends StatelessWidget {
                                 height: 10,
                             ),
                             MyHeader.Title(
-                                'Cae',
+                                user != null ? user.name : 'No User',
                                 fontSize: 32
                             ),
                             SizedBox(
                                 height: 10,
                             ),
                             MyHeader.Subtitle(
-                                'cae@gmail.com',
+                                user != null ? user.email : 'No User',
                                 fontSize: 24
                             ),
                             SizedBox(
@@ -52,6 +86,7 @@ class ProfilePage extends StatelessWidget {
                             ),
                             OutlineButton(
                                 onPressed: (){
+                                    logout();
                                     Navigator.pushNamed(context, '/login');
                                 },
                                 focusColor: HexColor(hex_danger),

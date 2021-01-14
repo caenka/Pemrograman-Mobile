@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:project/api.dart';
 
 // Project Dependency
 import 'package:project/variable/Colors.dart';
@@ -29,6 +30,27 @@ class _MoneyPageState extends State<MoneyPage> {
     String base64Image;
     final ImagePicker _picker = ImagePicker();
     
+    final _formKey = GlobalKey<FormState>();
+    int totalPrice = 0;
+
+    @override
+    void initState() {
+        super.initState();
+    }
+
+    void store() async {
+        var data = {
+            'total_price': totalPrice,
+            'image' : base64Image != null ? _imageFile : null,
+            'attachment': _imageFile != null ? File(_imageFile.path).path.split('/').last : null,
+            'user_id' : 1,
+            'donation_type_id': 1,
+        };
+
+        var res = await Network().authPostData(data, '/donations');
+        var body = await json.decode(res.body);
+        print(body['data']);
+    }
 
     @override
     Widget build(BuildContext context) {
@@ -60,6 +82,11 @@ class _MoneyPageState extends State<MoneyPage> {
                                 isNumber: true,
                                 labelText: 'Donasi Uang',
                                 hintText: 'Masukan Nominal',
+                                onChange: (value) {
+                                    setState(() {
+                                        totalPrice = int.parse(value);
+                                    });
+                                },
                             ),
                             // payment
                             Container(
@@ -83,7 +110,7 @@ class _MoneyPageState extends State<MoneyPage> {
                                             margin: EdgeInsets.only(bottom: 10),
                                             child: MyHeader.Title('Total Donasi', fontSize: 14)
                                         ),
-                                        MyHeader.Title('Rp. 150000', fontSize: 18, color: HexColor(hex_orange))
+                                        MyHeader.Title('Rp. ${totalPrice}', fontSize: 18, color: HexColor(hex_orange))
                                     ],
                                 ),
                             ),
@@ -101,7 +128,7 @@ class _MoneyPageState extends State<MoneyPage> {
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                         MyHeader.Title('Rekening', fontSize: 18, color: HexColor(hex_dark)),
-                                        MyHeader.Title('Rp. 150000', fontSize: 18, color: HexColor(hex_dark))
+                                        MyHeader.Title('12532624426', fontSize: 18, color: HexColor(hex_dark))
                                     ],
                                 ),
                             ),
@@ -110,31 +137,59 @@ class _MoneyPageState extends State<MoneyPage> {
                                 margin: EdgeInsets.only(bottom: 10),
                                 child: MyHeader.Title('Bukti Pembayaran', fontSize: 14)
                             ),
-                            FractionallySizedBox(
-                                widthFactor: 1,
-                                child: OutlineButton(
-                                    onPressed: (){
-                                        try {
-                                            chooseImageCamera();
-                                        } catch (err) {}
-                                    },
-                                    focusColor: HexColor(hex_orange),
-                                    highlightedBorderColor: HexColor(hex_orange),
-                                    borderSide: BorderSide(
-                                        color: HexColor(hex_orange),
+                            Row(
+                                children: [
+                                  Expanded(
+                                    child: OutlineButton(
+                                      onPressed: (){
+                                          try {
+                                              chooseImageCamera();
+                                          } catch (err) {}
+                                      },
+                                      focusColor: HexColor(hex_orange),
+                                      highlightedBorderColor: HexColor(hex_orange),
+                                      borderSide: BorderSide(
+                                          color: HexColor(hex_orange),
+                                      ),
+                                      child: Padding(
+                                          padding: const EdgeInsets.symmetric(vertical: 10),
+                                          child: Text(
+                                          'Kamera',
+                                          style: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.bold,
+                                              color: HexColor(hex_orange)
+                                          ),
+                                          ),
+                                      ),
                                     ),
-                                    child: Padding(
-                                        padding: const EdgeInsets.symmetric(vertical: 10),
-                                        child: Text(
-                                        'Upload Bukti Pembayaran',
-                                        style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.bold,
-                                            color: HexColor(hex_orange)
-                                        ),
-                                        ),
+                                  ),
+                                  Expanded(
+                                    child: OutlineButton(
+                                      onPressed: (){
+                                          try {
+                                              chooseImageGalery();
+                                          } catch (err) {}
+                                      },
+                                      focusColor: HexColor(hex_orange),
+                                      highlightedBorderColor: HexColor(hex_orange),
+                                      borderSide: BorderSide(
+                                          color: HexColor(hex_orange),
+                                      ),
+                                      child: Padding(
+                                          padding: const EdgeInsets.symmetric(vertical: 10),
+                                          child: Text(
+                                          'Galeri',
+                                          style: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.bold,
+                                              color: HexColor(hex_orange)
+                                          ),
+                                          ),
+                                      ),
                                     ),
-                                ),
+                                  ),
+                                ],
                             ),
                             Container(
                                 margin: EdgeInsets.symmetric(vertical: 20),
@@ -143,22 +198,23 @@ class _MoneyPageState extends State<MoneyPage> {
                             FractionallySizedBox(
                                 widthFactor: 1,
                                 child: RaisedButton(
-                                    onPressed: (){
-                                        Navigator.pushNamed(context, '/donations/done');
-                                    },
-                                    color: HexColor(hex_orange),
-                                    elevation: 0,
-                                    child: Padding(
-                                        padding: const EdgeInsets.symmetric(vertical: 10),
-                                        child: Text(
-                                        'Selesaikan',
-                                        style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.bold,
-                                            color: HexColor(hex_white)
-                                        ),
-                                        ),
+                                onPressed: (){
+                                    store();
+                                    Navigator.pushNamed(context, '/donations/done');
+                                },
+                                color: HexColor(hex_orange),
+                                elevation: 0,
+                                child: Padding(
+                                    padding: const EdgeInsets.symmetric(vertical: 10),
+                                    child: Text(
+                                    'Selesaikan',
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: HexColor(hex_white)
                                     ),
+                                    ),
+                                ),
                                 ),
                             ),
                         ],
@@ -230,8 +286,8 @@ class _MoneyPageState extends State<MoneyPage> {
                 width: double.infinity,
                 height: 160,
                 child: Center(
-                    child: Text('No Image Upload')
-                ), 
+                child: Text('No Image Upload')
+                ),
                 decoration: BoxDecoration(
                 color: HexColor(hex_light),
                 borderRadius: BorderRadius.circular(5)
@@ -242,32 +298,32 @@ class _MoneyPageState extends State<MoneyPage> {
 
     Widget showImage() {
         return FutureBuilder<void>(
-            future: retrieveLostData(),
-            builder: (BuildContext context, AsyncSnapshot<void> snapshot) {
-                switch (snapshot.connectionState) {
-                case ConnectionState.none:
-                case ConnectionState.waiting:
-                    return const Text(
+        future: retrieveLostData(),
+        builder: (BuildContext context, AsyncSnapshot<void> snapshot) {
+            switch (snapshot.connectionState) {
+            case ConnectionState.none:
+            case ConnectionState.waiting:
+                return const Text(
+                'You have not yet picked an image.',
+                textAlign: TextAlign.center,
+                );
+            case ConnectionState.done:
+                
+                return previewImage();
+            default:
+                if (snapshot.hasError) {
+                return Text(
+                    'Pick image/video error: ${snapshot.error}}',
+                    textAlign: TextAlign.center,
+                );
+                } else {
+                return const Text(
                     'You have not yet picked an image.',
                     textAlign: TextAlign.center,
-                    );
-                case ConnectionState.done:
-                    
-                    return previewImage();
-                default:
-                    if (snapshot.hasError) {
-                    return Text(
-                        'Pick image/video error: ${snapshot.error}}',
-                        textAlign: TextAlign.center,
-                    );
-                    } else {
-                    return const Text(
-                        'You have not yet picked an image.',
-                        textAlign: TextAlign.center,
-                    );
-                    }
+                );
                 }
-            },
+            }
+        },
         );
     }
 }

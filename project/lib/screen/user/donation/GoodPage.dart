@@ -1,7 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:project/api.dart';
 import 'package:project/components/MyHeader.dart';
+import 'package:project/model/Good.dart';
 
 // Project Dependency
 import 'package:project/variable/Colors.dart';
@@ -16,21 +20,48 @@ class GoodPage extends StatefulWidget {
 }
 
 class _GoodPageState extends State<GoodPage> {
-    List<ListItem<String>> indexList;
-    List<int> indexsSelected = new List();
+    String err = '';
+
+    List<ListItem<Good>> goods;
+    List<Good> goodSelected = new List();
+    String goodType = 'sembako';
+    bool _isLoad = true;
+    
 
     @override
         void initState() {
         super.initState();
-        populateData();
+        // populateData();
+        loadData();
+        goodSelected = new List();
+    }
+
+    void loadData() async {
+        print('load All');
+        setState(() {
+          _isLoad = true;
+        });
+
+        var res = await Network().authGetData('/goods?type=$goodType');
+        var body = jsonDecode(res.body);
+        print(body);
+        List<ListItem<Good>> tempList = await body['data'].map<ListItem<Good>>((item) => ListItem<Good>(Good.fromJson(item))).toList();
+        setState(() {
+            goods = tempList;
+        });
+        
+        setState(() {
+          _isLoad = false;
+        });
     }
     
-    void populateData() {
-        indexList = [];
-        for (int i = 0; i < 10; i++) {
-            indexList.add(ListItem<String>("item $i"));
-        }
-    }
+    // void populateData() {
+    //     indexList = [];
+    //     for (int i = 0; i < 10; i++) {
+    //         indexList.add(ListItem<String>("item $i"));
+    //     }
+    // }
+
 
     @override
     Widget build(BuildContext context) {
@@ -44,7 +75,20 @@ class _GoodPageState extends State<GoodPage> {
                 height: 80,
                 child: FloatingActionButton(
                     onPressed: (){
-                        Navigator.pushNamed(context, '/donations/calculate');
+                        setState(() {
+                            err = '';
+                        });
+                        if (goodSelected.length < 1) {
+                            setState(() {
+                                err = 'Pilih barang dulu untuk didonasikan';
+                            });
+                        } else {
+                            Navigator.pushNamed(
+                                context, 
+                                '/donations/calculate',
+                                arguments: goodSelected,
+                            );
+                        }
                     },
                     child: Text('Kalkulasi'),
                     backgroundColor: HexColor(hex_orange),
@@ -57,6 +101,13 @@ class _GoodPageState extends State<GoodPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                            err != '' ? Container(
+                                padding: EdgeInsets.all(15),
+                                margin: EdgeInsets.only(bottom: 20),
+                                width: double.infinity,
+                                color: Colors.redAccent,
+                                child: MyHeader.Title(err, fontSize: 18, color: HexColor(hex_white))
+                            ) : Text(''),
                             Container(
                                 margin: EdgeInsets.only(bottom: 10),
                                 child: MyHeader.Title('Donasi Uang ke Barang', fontSize: 18)
@@ -72,13 +123,20 @@ class _GoodPageState extends State<GoodPage> {
                                     FlatButton(
                                         shape: RoundedRectangleBorder(
                                             borderRadius: BorderRadius.circular(18.0),
+                                            side: BorderSide(color: HexColor(hex_orange))
                                         ),
-                                        onPressed: (){},
-                                        color: HexColor(hex_orange),
+                                        onPressed: (){
+                                            setState(() {
+                                                goodType = 'sembako';
+                                                goodSelected = new List();
+                                            });
+                                            loadData();
+                                        },
+                                        color: HexColor(goodType == 'sembako' ? hex_orange : hex_white),
                                         child: Text(
                                             'Sembako',
                                             style: TextStyle(
-                                                color: HexColor(hex_white)
+                                                color: HexColor(goodType == 'sembako' ? hex_white : hex_orange)
                                             ),
                                         )
                                     ),
@@ -87,12 +145,18 @@ class _GoodPageState extends State<GoodPage> {
                                             borderRadius: BorderRadius.circular(18.0),
                                             side: BorderSide(color: HexColor(hex_orange))
                                         ),
-                                        onPressed: (){},
-                                        color: HexColor(hex_white),
+                                        onPressed: (){
+                                            setState(() {
+                                                goodType = 'pakaian';
+                                                goodSelected = new List();
+                                            });
+                                            loadData();
+                                        },
+                                        color: HexColor(goodType == 'pakaian' ? hex_orange : hex_white),
                                         child: Text(
-                                            'Pakaian',
+                                            'Paikaian',
                                             style: TextStyle(
-                                                color: HexColor(hex_orange)
+                                                color: HexColor(goodType == 'pakaian' ? hex_white : hex_orange)
                                             ),
                                         )
                                     ),
@@ -101,12 +165,18 @@ class _GoodPageState extends State<GoodPage> {
                                             borderRadius: BorderRadius.circular(18.0),
                                             side: BorderSide(color: HexColor(hex_orange))
                                         ),
-                                        onPressed: (){},
-                                        color: HexColor(hex_white),
+                                        onPressed: (){
+                                            setState(() {
+                                                goodType = 'barang';
+                                                goodSelected = new List();
+                                            });
+                                            loadData();
+                                        },
+                                        color: HexColor(goodType == 'barang' ? hex_orange : hex_white),
                                         child: Text(
                                             'Barang',
                                             style: TextStyle(
-                                                color: HexColor(hex_orange)
+                                                color: HexColor(goodType == 'barang' ? hex_white : hex_orange)
                                             ),
                                         )
                                     ),
@@ -115,59 +185,16 @@ class _GoodPageState extends State<GoodPage> {
                             SizedBox(
                                 height: 20,
                             ),
-                            // search input
-                            Container(
-                                margin: EdgeInsets.only(bottom: 20),
-                                child: TextField(
-                                    decoration: InputDecoration(
-                                        labelText: 'Cari Sembako',
-                                        suffixIcon: Container(
-                                            color: HexColor(hex_orange), 
-                                            padding: EdgeInsets.only(top: 0.0, right: 0.0), 
-                                            child: Column(
-                                                crossAxisAlignment: CrossAxisAlignment.center,
-                                                mainAxisAlignment: MainAxisAlignment.center,
-                                                children: [
-                                                Text(
-                                                    'Cari',
-                                                    style: TextStyle(
-                                                        color: HexColor(hex_white),
-                                                        fontWeight: FontWeight.bold),
-                                                ),
-                                                ],
-                                            )
-                                        ),
-                                        labelStyle: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            color: HexColor(hex_orange),
-                                            fontSize: 14.0
-                                        ),
-                                        isDense: true,
-                                        hintText: 'Ketikan Nama Sembako',
-                                        hintStyle: TextStyle(
-                                            color: HexColor(hex_gray),
-                                            fontSize: 14.0
-                                        ),
-                                        border: OutlineInputBorder(
-                                            borderSide: BorderSide(),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(color: HexColor(hex_orange)),
-                                        ),
-                                        contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
-                                    ),
-                                ),
-                            ),
 
                             // Goods Data
-                            Container(
+                            goods != null ? Container(
                                 height: 300,
                                 child: GridView.builder(
                                     gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-                                    itemCount: indexList.length,
+                                    itemCount: goods.length,
                                     itemBuilder: CardGood,
                                 ),
-                            )
+                            ) : Text('Loading Data...')
                         ],
                     ),
                 )
@@ -179,23 +206,24 @@ class _GoodPageState extends State<GoodPage> {
     Widget CardGood(BuildContext context, int index) {
         return GestureDetector(
             onTap: () {
-                if (indexList.any((item) => item.isSelected)) {
+                if (goods.any((item) => item.isSelected)) {
                     setState(() {
-                        if (indexsSelected.contains(index)) {
-                            indexsSelected.remove(index);
+                        if (goodSelected.contains(goods[index].data)) {
+                            goodSelected.remove(goods[index].data);
                         } else {
-                            indexsSelected.add(index);
+                            goodSelected.add(goods[index].data);
                         }
-                        indexList[index].isSelected = !indexList[index].isSelected;
+                        goods[index].isSelected = !goods[index].isSelected;
                     });
+                    print(goodSelected);
                 } 
-                print(indexsSelected);
             },
             onLongPress: () {
                 setState(() {
-                    indexList[index].isSelected = true;
-                    indexsSelected.add(index);
+                    goods[index].isSelected = true;
+                    goodSelected.add(goods[index].data);
                 });
+                print(goodSelected);
             },
             child: Container(
                 height: 120,
@@ -203,7 +231,7 @@ class _GoodPageState extends State<GoodPage> {
                     child: Container(
                         decoration: BoxDecoration(
                             border: Border.all(
-                                color: indexList[index].isSelected ? HexColor(hex_orange) : HexColor(hex_softgray)
+                                color: goods[index].isSelected ? HexColor(hex_orange) : HexColor(hex_softgray)
                             )
                         ),
                         child: Column(
@@ -215,17 +243,17 @@ class _GoodPageState extends State<GoodPage> {
                                     height: 75,
                                     child: Image(
                                         fit: BoxFit.cover,
-                                        image: AssetImage('assets/images/beras.png'),
+                                        image:  NetworkImage(Network().getBaseUrl()+goods[index].data.photo),
                                     ),
                                 ),
                                 MyHeader.Title(
-                                    'Beras',
-                                    color: indexList[index].isSelected ? HexColor(hex_orange) : HexColor(hex_dark),
+                                    goods[index].data.name,
+                                    color: goods[index].isSelected ? HexColor(hex_orange) : HexColor(hex_dark),
                                     fontSize: 18
                                 ),
                                 MyHeader.Subtitle(
-                                    'Rp. 50.000',
-                                    color: indexList[index].isSelected ? HexColor(hex_green) : HexColor(hex_gray),
+                                    'Rp ${goods[index].data.price}',
+                                    color: goods[index].isSelected ? HexColor(hex_green) : HexColor(hex_gray),
                                     fontSize: 16
                                 )
                             ],

@@ -10,29 +10,16 @@ class CardHistory extends StatelessWidget {
   String type;
   String cardDate;
   String cardTitle;
-  String cardBank;
   String cardNominal;
-  String cardStatus;
 
   CardHistory({
     Key key,
     this.type,
     @required this.cardDate,
     @required this.cardTitle,
-    @required this.cardBank,
     @required this.cardNominal,
-    @required this.cardStatus
   }) : super(key: key);
 
-  getStatusColor() {
-    if(this.cardStatus.toLowerCase() == 'sukses') {
-      return HexColor(hex_green);
-    } else if(this.cardStatus.toLowerCase() == 'batal') {
-      return HexColor(hex_orange);
-    } else {
-      return HexColor(hex_gray);
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +53,7 @@ class CardHistory extends StatelessWidget {
                           child: Container(
                             width: 68,
                             height: 68,
-                            color: this.getStatusColor(),
+                            color: HexColor(hex_green),
                             child: Center(
                               child: Icon(
                                 this.type == 'barang' ? Icons.markunread_mailbox : Icons.attach_money,
@@ -102,36 +89,13 @@ class CardHistory extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Container(
-                              margin: EdgeInsets.only(right: 5),
-                              child: Icon(
-                                Icons.account_balance_wallet,
-                                color: HexColor(hex_green),
-                                size: 12,
-                              ),
-                            ),
-                            Expanded(
-                              child: Text(
-                                this.cardBank,
-                                style: TextStyle(
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.w800,
-                                  color: HexColor(hex_green)
-                                ),
-                              ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(right: 5),
-                              child: Icon(
-                                Icons.info,
-                                color: HexColor(hex_gray),
-                                size: 24,
-                              ),
-                            )
-                          ],
+                       Container(
+                          margin: EdgeInsets.only(right: 5),
+                          child: Icon(
+                            Icons.account_balance_wallet,
+                            color: HexColor(hex_green),
+                            size: 12,
+                          ),
                         ),
                         Divider(
                           color: HexColor(hex_softgray),
@@ -140,7 +104,7 @@ class CardHistory extends StatelessWidget {
                           this.cardNominal,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: this.getStatusColor(),
+                            color: HexColor(hex_dark),
                             fontSize: 12
                           ),
                         ),
@@ -160,10 +124,10 @@ class CardHistory extends StatelessWidget {
               child: Container(
                 width: 60,
                 height: 20,
-                color: this.getStatusColor(),
+                color: HexColor(hex_green),
                 child: Center(
                   child: Text(
-                    this.cardStatus,
+                    'Sukses',
                     style: TextStyle(
                       color: HexColor(hex_white),
                       fontSize: 12

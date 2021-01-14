@@ -16,20 +16,22 @@ class MyTextField extends StatefulWidget {
   IconData suffixIcon;
   EdgeInsets margin;
   Function onChange;
-  Function onSubmitted;
+  Function validator;
+  TextEditingController controller;
 
   MyTextField({
     Key key,
     @required this.labelText,
     this.hintText,
-    this.isPasswordField = true,
+    this.isPasswordField = false,
     this.isNumber = false,
     this.margin,
     this.prefixIcon,
     this.suffixIcon,
     this.enabled,
     this.onChange,
-    this.onSubmitted
+    this.validator,
+    this.controller
   }) : super(key: key);
 
   @override
@@ -66,49 +68,50 @@ class _MyTextFieldState extends State<MyTextField> {
 
     return Container(
       margin: widget.margin != null ? widget.margin : EdgeInsets.only(bottom: 10),
-      child: TextField(
-        enabled: widget.enabled != null ? widget.enabled : true,
-        onTap: () {
-          if (!currentFocus.hasPrimaryFocus) {
-            currentFocus.unfocus();
-          }
-        },
-        focusNode: _focusNode,
-        onChanged: widget.onChange,
-        onSubmitted: widget.onSubmitted,
-        obscureText: widget.isPasswordField,
-        keyboardType: widget.isNumber ? TextInputType.number : TextInputType.text,
-        decoration: InputDecoration(
-            filled: true,
-            fillColor: HexColor(hex_light),
-            enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                color: HexColor(hex_softgray)
+      child: TextFormField(
+            controller: widget.controller,
+            validator: widget.validator,
+            enabled: widget.enabled != null ? widget.enabled : true,
+            onTap: () {
+            if (!currentFocus.hasPrimaryFocus) {
+                currentFocus.unfocus();
+            }
+            },
+            focusNode: _focusNode,
+            onChanged: widget.onChange,
+            obscureText: widget.isPasswordField,
+            keyboardType: widget.isNumber ? TextInputType.number : TextInputType.text,
+            decoration: InputDecoration(
+                filled: true,
+                fillColor: HexColor(hex_light),
+                enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                    color: HexColor(hex_softgray)
+                    )
+                ),
+                labelText: widget.labelText,
+                prefixIcon: this.getPrefixIcon(),
+                suffixIcon: this.getSuffixIcon(),
+                labelStyle: TextStyle(
+                    color: widget.enabled == false ? HexColor(hex_dark) : _focusNode.hasFocus ? HexColor(hex_orange) : HexColor(hex_softgray),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                ),
+                hintText: widget.hintText,
+                hintStyle: TextStyle (
+                    color: HexColor(hex_softgray),
+                    fontSize: 14.0,
+                ),
+                focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                    color: HexColor(hex_orange)
+                    ),
+                ),
+                contentPadding: EdgeInsets.symmetric(
+                    vertical: 10, horizontal: 10
                 )
             ),
-            labelText: widget.labelText,
-            prefixIcon: this.getPrefixIcon(),
-            suffixIcon: this.getSuffixIcon(),
-            labelStyle: TextStyle(
-                color: widget.enabled == false ? HexColor(hex_dark) : _focusNode.hasFocus ? HexColor(hex_orange) : HexColor(hex_softgray),
-                fontWeight: FontWeight.bold,
-                fontSize: 14,
-            ),
-            hintText: widget.hintText,
-            hintStyle: TextStyle (
-                color: HexColor(hex_softgray),
-                fontSize: 14.0,
-            ),
-            focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                color: HexColor(hex_orange)
-                ),
-            ),
-            contentPadding: EdgeInsets.symmetric(
-                vertical: 10, horizontal: 10
-            )
         ),
-      ),
     );
   }
 }
