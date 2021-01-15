@@ -11,9 +11,6 @@ import 'package:project/model/Good.dart';
 import 'package:project/variable/Colors.dart';
 import 'package:project/components/MyContainer.dart';
 
-// Component Dependency
-import 'package:project/components/MyContainer.dart';
-
 class GoodPage extends StatefulWidget {
     @override
     _GoodPageState createState() => _GoodPageState();
@@ -137,8 +134,7 @@ class _GoodPageState extends State<GoodPage> {
                                             'Sembako',
                                             style: TextStyle(
                                                 color: HexColor(goodType == 'sembako' ? hex_white : hex_orange)
-                                            ),
-                                        )
+                                            ),                                        )
                                     ),
                                     FlatButton(
                                         shape: RoundedRectangleBorder(
@@ -256,8 +252,7 @@ class _GoodPageState extends State<GoodPage> {
                                     color: goods[index].isSelected ? HexColor(hex_green) : HexColor(hex_gray),
                                     fontSize: 16
                                 )
-                            ],
-                        ),
+                            ],                        ),
                     )
                 ),
             ),

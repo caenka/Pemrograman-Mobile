@@ -7,7 +7,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:project/components/MyHeader.dart';
 
 // Model
 import 'package:project/model/User.dart';
@@ -15,12 +14,7 @@ import 'package:project/model/User.dart';
 // Project Dependency
 import 'package:project/variable/Colors.dart';
 import 'package:project/components/MyContainer.dart';
-
-// Component Dependency
-import 'package:project/components/MyContainer.dart';
-import 'package:project/components/MyTextField.dart';
 import 'package:project/components/MyHeader.dart';
-
 
 class ProfilePage extends StatelessWidget {
     User user = null;

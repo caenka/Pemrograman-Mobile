@@ -41,7 +41,7 @@ class _LoginState extends State<Login> {
                 resizeToAvoidBottomInset: false,
                 backgroundColor: HexColor(hex_white),
                 body: Stack(
-                clipBehavior: Clip.antiAlias,
+                    clipBehavior: Clip.antiAlias,
                     children: [
                         Positioned(
                             right: -30,

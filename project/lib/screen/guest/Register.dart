@@ -102,7 +102,9 @@ class _RegisterState extends State<Register> {
                   FractionallySizedBox(
                     widthFactor: 1,
                     child: RaisedButton(
-                      onPressed: (){},
+                      onPressed: (){
+                        Navigator.pushNamed(context, '/users');
+                      },
                       color: HexColor(hex_orange),
                       elevation: 0,
                       child: Padding(
@@ -136,7 +138,7 @@ class _RegisterState extends State<Register> {
                             padding: EdgeInsets.symmetric(horizontal: 10),
                             color: HexColor(hex_white),
                             child: Text(
-                              'Suda punya akun ?',
+                              'Sudah punya akun ?',
                               style: TextStyle(
                                 color: HexColor(hex_gray),
                                 fontSize: 10

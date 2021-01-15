@@ -7,9 +7,6 @@ import 'package:project/components/MyHeader.dart';
 import 'package:project/variable/Colors.dart';
 import 'package:project/components/MyContainer.dart';
 
-// Component Dependency
-import 'package:project/components/MyContainer.dart';
-
 class DonePage extends StatefulWidget {
     @override
     _DonePageState createState() => _DonePageState();
@@ -47,22 +44,22 @@ class _DonePageState extends State<DonePage> {
                             FractionallySizedBox(
                                 widthFactor: 1,
                                 child: RaisedButton(
-                                onPressed: (){
-                                    Navigator.pushNamed(context, '/users');
-                                },
-                                color: HexColor(hex_orange),
-                                elevation: 0,
-                                child: Padding(
-                                    padding: const EdgeInsets.symmetric(vertical: 10),
-                                    child: Text(
-                                    'Halaman Utama',
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold,
-                                        color: HexColor(hex_white)
+                                    onPressed: (){
+                                        Navigator.pushNamed(context, '/users');
+                                    }, 
+                                    color: HexColor(hex_orange), 
+                                    elevation: 0, 
+                                    child: Padding(
+                                        padding: const EdgeInsets.symmetric(vertical: 10),
+                                        child: Text(
+                                        'Halaman Utama',
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold,
+                                            color: HexColor(hex_white)
+                                        ),
+                                        ),
                                     ),
-                                    ),
-                                ),
                                 ),
                             ),
                         ],
